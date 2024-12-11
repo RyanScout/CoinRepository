@@ -1,4 +1,5 @@
 # CoinRepository
+```plaintext
 This repository contains a PyTorch-based training script for detecting coins in images using a Faster R-CNN model pretrained on ResNet-50 FPN. The script uses a custom dataset of annotated images, along with bounding box coordinates for the coins. The model is trained to localize and classify multiple coin types.
 
 Contents
