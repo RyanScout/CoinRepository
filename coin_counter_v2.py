@@ -136,14 +136,11 @@ def train():
 
     # Directories
     # Dataset for training
-    train_annotations_file = 'Modified_Data/train/_annotations.csv'
-    train_img_dir = 'Modified_Data/train'
-    # Dataset for validation
-    valid_annotations_file = 'Modified_Data/valid/_annotations.csv'
-    valid_img_dir = 'Modified_Data/valid'
+    train_annotations_file = 'data/train/_annotations.csv'
+    train_img_dir = 'data/train'
     # Data set for testing
-    test_annotations_file = 'Modified_Data/test/_annotations.csv'
-    test_img_dir = 'Modified_Data/test'
+    test_annotations_file = 'data/test/_annotations.csv'
+    test_img_dir = 'data/test'
 
     transforms = T.Compose([
         T.ToTensor(),
@@ -151,7 +148,6 @@ def train():
 
     # Create datasets
     train_dataset = CoinDataset(train_annotations_file, train_img_dir, transforms=transforms)
-    valid_dataset = CoinDataset(valid_annotations_file, valid_img_dir, transforms=transforms)
     test_dataset = CoinDataset(test_annotations_file, test_img_dir, transforms=transforms)
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -166,11 +162,6 @@ def train():
     train_size = int(train_fraction * total_size)
     train_size = min(train_size, total_size)
 
-    valid_fraction = 0.1
-    total_size = len(valid_dataset)
-    valid_size = int(valid_fraction * total_size)
-    valid_size = min(valid_size, total_size)
-
     test_fraction = 1
     total_size = len(test_dataset)
     test_size = int(test_fraction * total_size)
@@ -180,14 +171,11 @@ def train():
     # Create subsets of the data for randomization
     rand_train_indices = torch.randperm(len(train_dataset)).tolist()
     train_indices = rand_train_indices[:train_size]
-    rand_valid_indices = torch.randperm(len(valid_dataset)).tolist()
-    valid_indices = rand_valid_indices[:valid_size]
     rand_test_indices = torch.randperm(len(test_dataset)).tolist()
     test_indices = rand_test_indices[:test_size]
 
     # Redefine datasets
     train_dataset = torch.utils.data.Subset(train_dataset, train_indices)
-    valid_dataset = torch.utils.data.Subset(valid_dataset, valid_indices)
     test_dataset = torch.utils.data.Subset(test_dataset, test_indices)
 
     # Initialize DataLoader with collate_fn and num_workers
@@ -235,8 +223,7 @@ def train():
     torch.save(model.state_dict(), 'coin_detector.pth')
 
     # Visualize some testing predictions
-    visualize_predictions(model, train_dataset, device, num_images=5)
+    visualize_predictions(model, test_dataset, device, num_images=5)
 
 if __name__ == "__main__":
     train()
-
