@@ -63,11 +63,9 @@ Make sure you have a Python environment with all the required packages. For exam
 source venv/bin/activate
 Set File Paths (If Necessary)
 In the train.py file, you may need to adjust the following lines if your data structure differs:
+
 train_annotations_file = 'data/train/_annotations.csv'
 train_img_dir = 'data/train'
-
-valid_annotations_file = 'data/valid/_annotations.csv'
-valid_img_dir = 'data/valid'
 
 test_annotations_file = 'data/test/_annotations.csv'
 test_img_dir = 'data/test'
@@ -75,7 +73,7 @@ test_img_dir = 'data/test'
 Make sure these paths point to the correct directories and files in your environment.
 Run the Training Script
 Simply run:
-python train.py
+python coin_counter_v2.py
 This will load the datasets, initialize the model, and begin training for the number of epochs specified in the code (num_epochs variable).
 The model weights will be saved as coin_detector.pth after training completes.
 
