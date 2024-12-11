@@ -28,26 +28,23 @@ Directory Structure and Data Preparation
 Before running the script, ensure your project directory is set up as follows:
 
 project_root/
-|-- coin_counter_v2.py
-|-- data/
-|   |-- train/
-|   |   |-- image1.jpg
-|   |   |-- image2.jpg
-|   |   |-- ...
-|   |   |-- _annotations.csv
-|   |
-|   |-- valid/
-|   |   |-- image1.jpg
-|   |   |-- ...
-|   |   |-- _annotations.csv
-|   |
-|   |-- test/
-|       |-- image1.jpg
-|       |-- ...
-|       |-- _annotations.csv
-|
-|-- coin_detector.pth (will be saved here after training)
-_annotations.csv format:
+│-- coin_counter_v2.py            # The main training script
+│-- data/                         # Directory containing train, valid, and test image sets with annotations
+│   ├-- train/
+│   │   ├-- image1.jpg
+│   │   ├-- image2.jpg
+│   │   └-- ...
+│   │   └-- _annotations.csv
+│   ├-- valid/
+│   │   ├-- image1.jpg
+│   │   └-- ...
+│   │   └-- _annotations.csv
+│   └-- test/
+│       ├-- image1.jpg
+│       └-- ...
+│       └-- _annotations.csv
+│-- coin_detector.pth             # The trained model weights (generated after running the script)
+
 
 Each _annotations.csv file should contain bounding box annotations for each image. Typical columns are:
 
