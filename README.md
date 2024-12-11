@@ -39,6 +39,35 @@ python coin_counter_v2.py
 
 The trained model weights will be saved as `coin_detector.pth`.
 
+## Installing and Running from a ZIP File
+
+1. **Download the ZIP File**:  
+   Download the repository as a ZIP file from the GitHub page by clicking the **"Download ZIP"** button.
+
+2. **Extract the ZIP File**:  
+   Unzip the file into your desired directory.
+
+3. **Navigate to the Project Directory**:  
+   Open a terminal and navigate to the extracted folder:
+
+   ```bash
+   cd path/to/extracted/folder
+   ```
+
+4. **Install Dependencies**:  
+   Install the required packages using `requirements.txt`:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Run the Script**:  
+   Execute the training script:
+
+   ```bash
+   python coin_counter_v2.py
+   ```
+
 ## Adjusting Learning Parameters
 
 You can modify learning parameters in `coin_counter_v2.py`:
